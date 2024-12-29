@@ -11,8 +11,8 @@
 #include <ncurses.h>
 #include <stdlib.h>
 
-#include "common.h"
-#include "rect.h"
+#include "ncge/ll.h"
+#include "ncge/types.h"
 
 static inline struct vec2 dir_to_vec(enum dir d)
 {
@@ -20,166 +20,113 @@ static inline struct vec2 dir_to_vec(enum dir d)
 
 	switch (d) {
 	case dir_up:
-		return (struct vec2) {
-			.row = -1,
-			.col = 0,
-		};
+		return vec2_create(-1, 0);
 	case dir_down:
-		return (struct vec2) {
-			.row = 1,
-			.col = 0,
-		};
+		return vec2_create(1, 0);
 	case dir_left:
-		return (struct vec2) {
-			.row = 0,
-			.col = -2,
-		};
+		return vec2_create(0, -2);
 	case dir_right:
-		return (struct vec2) {
-			.row = 0,
-			.col = 2,
-		};
+		return vec2_create(0, 2);
 	default:
-		return (struct vec2) {
-			.row = 0,
-			.col = 0,
-		};
+		return vec2_create(0, 0);
 	}
 }
 
-static struct node* create_node(struct vec2 d, enum color col)
-{
-	struct node* n = calloc(1, sizeof(struct node));
-	if (n == NULL)
-		return n;
-
-	n->d.col = col;
-	rect_set(&n->d, d);
-
-	return n;
-}
-
-static int add_node(struct snake* const s, struct vec2 d, enum color col)
+static void move_body(struct snake* const s)
 {
 	assert(s != NULL);
 
-	struct node* cur = NULL;
-	if (s->head == NULL) {
-		s->head = create_node(d, col);
-		if (s->head == NULL)
-			return ERR;
-	} else {
-		cur = s->head;
-		while (cur->next != NULL)
-			cur = cur->next;
-
-		cur->next = create_node(d, col);
+	struct rect hp = ll_dcast(s->body.head, struct rect);
+	ll_foreach (&s->body) {
+		struct rect np           = ll_dcast(n, struct rect);
+		ll_dcast(n, struct rect) = hp;
+		hp                       = np;
 	}
-
-	return OK;
-}
-
-static int move_tail(struct snake* const s)
-{
-	struct node* cur = s->head;
-	if (cur == NULL)
-		return ERR;
-
-	struct rect hp = s->head->d;
-	for (; cur != NULL; cur = cur->next) {
-		struct rect np = cur->d;
-		cur->d         = hp;
-		hp             = np;
-	}
-
-	return OK;
 }
 
 static bool bites(const struct snake* const s)
 {
-	struct node* cur = s->head;
-	if (cur == NULL)
-		return ERR;
+	assert(s != NULL);
 
-	cur = cur->next;
-	for (; cur != NULL; cur = cur->next)
-		if (rect_intersect(&s->head->d, &cur->d))
+	const struct node* const h = s->body.head;
+
+	struct node* n = s->body.head->next;
+	ll_for (&s->body, n)
+		if (rect_eq(h->d, n->d))
 			return true;
 
 	return false;
 }
 
-struct snake* snake_create(struct board* const b, struct vec2 hp, enum color col)
+static inline bool in_bounds(const struct snake* const s)
+{
+	assert(s != NULL);
+
+	const struct rect* const h = s->body.head->d;
+
+	return board_in(s->b, h->left) && board_in(s->b, h->right);
+}
+
+int snake_init(
+	struct snake* const s, struct board* const b, struct vec2 hp, enum color col)
 {
 	assert(b != NULL);
 
-	struct snake* s = calloc(1, sizeof(struct snake));
-	if (s == NULL)
-		return s;
+	s->b   = b;
+	s->col = col;
 
-	s->b = b;
+	ll_init(&s->body, sizeof(struct rect), NULL);
+	struct rect head = rect_create(hp, s->col);
 
-	int err = add_node(s, hp, col);
-	if (err < 0)
-		return NULL;
-
-	return s;
+	return ll_add(&s->body, &head, false);
 }
 
-int snake_draw(const struct snake* const s)
+void snake_draw(const struct snake* const s)
 {
-	struct node* cur = s->head;
-	if (cur == NULL)
-		return ERR;
+	assert(s != NULL);
 
-	for (; cur != NULL; cur = cur->next)
-		rect_draw(&cur->d, s->b);
-
-	return OK;
+	ll_foreach (&s->body)
+		rect_draw(n->d, s->b);
 }
 
-int snake_move(struct snake* const s, enum dir d)
+bool snake_move(struct snake* const s, enum dir d)
 {
-	struct vec2 new_hp = vec2_add_v(s->head->d.left, dir_to_vec(d));
+	assert(s != NULL);
 
-	int err = move_tail(s);
-	if (err < 0)
-		return err;
+	struct rect* hp    = s->body.head->d;
+	struct vec2 new_hp = vec2_add_v(hp->left, dir_to_vec(d));
 
-	rect_set(&s->head->d, new_hp);
-	if (bites(s))
-		return BITE;
+	move_body(s);
+	rect_fill(hp, new_hp, s->col);
 
-	return err;
+	return (!bites(s) && in_bounds(s));
 }
 
-int snake_gain(struct snake* const s)
+int snake_grow(struct snake* const s)
 {
-	struct vec2 hp = s->head->d.left;
-	int err        = add_node(s, hp, color_red);
-	if (err < 0)
-		return err;
+	assert(s != NULL);
 
-	return OK;
+	struct rect* hp = s->body.head->d;
+	struct rect r   = *hp;
+
+	return ll_add(&s->body, &r, false);
 }
 
 bool snake_collides(const struct snake* const s, const struct rect* const with)
 {
-	return rect_intersect(&s->head->d, with);
+	assert(s != NULL);
+	assert(with != NULL);
+
+	struct rect* h = s->body.head->d;
+
+	return rect_eq(h, with);
 }
 
 void snake_destroy(struct snake* const s)
 {
-	struct node* cur  = s->head;
-	struct node* next = cur;
+	assert(s != NULL);
 
-	while (cur != NULL) {
-		next = cur->next;
-		free(cur);
-		cur = next;
-	}
-
-	free(s);
+	ll_destroy(&s->body);
 }
 
 /**** END OF FILE ****/

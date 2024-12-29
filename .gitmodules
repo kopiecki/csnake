@@ -1,0 +1,3 @@
+[submodule "lib/ncge"]
+	path = lib/ncge
+	url = git@github.com:kopiecki/ncge.git
