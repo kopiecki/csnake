@@ -25,15 +25,15 @@ static inline int get_rn(int lower, int upper)
 
 static inline int put_title(WINDOW* const w)
 {
-	return mvwprintw(w, 0, wcfgs[win_main].dim.col / 2 - 4, "csnake");
+	return mvwprintw(w, 0, wcfgs[win_tp_main].dim.col / 2 - 4, "csnake");
 }
 
 static inline int put_score(WINDOW* const w, u32 score)
 {
 	return mvwprintw(
 		w,
-		wcfgs[win_main].dim.row - 1,
-		wcfgs[win_main].dim.col / 2 - 4,
+		wcfgs[win_tp_main].dim.row - 1,
+		wcfgs[win_tp_main].dim.col / 2 - 4,
 		"score: %d",
 		score);
 }
@@ -56,6 +56,9 @@ static inline int put_end_msg(WINDOW* const w, u32 score)
 
 static void spawn_food(struct board* const b, struct rect* const food)
 {
+	assert(b != NULL);
+	assert(food != NULL);
+
 	const struct vec2 min = { 1, 1 };
 	const struct vec2 max = vec2_add_v(board_max(b), vec2_create(-1, -2));
 
@@ -68,10 +71,13 @@ static void spawn_food(struct board* const b, struct rect* const food)
 	rect_fill(food, pos, food_col);
 }
 
-static int handle_collision(struct game* const g)
+static int handle_collision(struct ncge* const ctx)
 {
-	struct board* const b = ll_get(&g->base.boards, 0);
+	assert(ctx != NULL);
 
+	struct game* const g = child_of(ctx);
+
+	struct board* const b = ncge_get_board(ctx, 0);
 	if (snake_collides(&g->snake, &g->food)) {
 		int err = snake_grow(&g->snake);
 		if (err < 0)
@@ -89,6 +95,8 @@ static int handle_collision(struct game* const g)
 
 static int on_init(struct ncge* const ctx)
 {
+	assert(ctx != NULL);
+
 	struct game* const g  = child_of(ctx);
 	struct board* const b = ncge_get_board(ctx, 0);
 
@@ -96,7 +104,7 @@ static int on_init(struct ncge* const ctx)
 	if (err < 0)
 		return err;
 
-	WINDOW* const w = ncge_get_win(ctx, win_info);
+	WINDOW* const w = ncge_get_win(ctx, win_tp_info);
 	if (w == NULL)
 		return -ENODATA;
 
@@ -114,6 +122,9 @@ static int on_init(struct ncge* const ctx)
 
 	spawn_food(b, &g->food);
 
+	g->dir   = dir_right;
+	g->score = 0;
+
 	ctx->state = state_play;
 
 	return 0;
@@ -121,6 +132,8 @@ static int on_init(struct ncge* const ctx)
 
 static int on_play(struct ncge* const ctx)
 {
+	assert(ctx != NULL);
+
 	struct game* const g  = child_of(ctx);
 	struct board* const b = ncge_get_board(ctx, 0);
 
@@ -173,6 +186,8 @@ static int on_play(struct ncge* const ctx)
 
 static void reinit(struct ncge* const ctx)
 {
+	assert(ctx != NULL);
+
 	struct game* const g = child_of(ctx);
 
 	g->dir   = dir_right;
@@ -185,9 +200,13 @@ static void reinit(struct ncge* const ctx)
 
 static int on_lose(struct ncge* const ctx)
 {
+	assert(ctx != NULL);
+
 	struct game* const g = child_of(ctx);
 
-	int err = put_end_msg(ll_get(&ctx->wins, win_info), g->score);
+	WINDOW* const w = ncge_get_win(ctx, win_tp_info);
+
+	int err = put_end_msg(w, g->score);
 	if (err < 0)
 		return err;
 
@@ -226,7 +245,7 @@ static int on_frame(struct ncge* const ctx)
 			return 0;
 		}
 
-		const int err = handle_collision(g);
+		const int err = handle_collision(ctx);
 		if (err < 0)
 			return err;
 	}
@@ -261,9 +280,6 @@ int game_run(struct game* const g)
 	err = ncge_create_board(&g->base, 0);
 	if (err < 0)
 		return err;
-
-	g->dir   = dir_right;
-	g->score = 0;
 
 	return ncge_run(&g->base);
 }

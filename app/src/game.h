@@ -14,6 +14,14 @@
 #include "ncge/rect.h"
 #include "snake.h"
 
+/**
+ * struct game - Snake game representation
+ * @base:  Pointer to base class. In this case it is `ncge` layer.
+ * @snake: Snake representation.
+ * @food:  Food representation.
+ * @score: Game score.
+ * @dir:   Current direction in which snake's moving.
+ */
 struct game {
 	struct ncge base;
 	struct snake snake;
@@ -23,7 +31,6 @@ struct game {
 };
 
 int game_run(struct game* const g);
-void game_destroy(struct game* const g);
 
 #endif /* GAME_H_INCLUDED_ */
 

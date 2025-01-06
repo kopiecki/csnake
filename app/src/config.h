@@ -18,17 +18,30 @@
 #define DELAY_INC  (1 << 6)
 #define KEY_ESC    27
 
+/**
+ * @brief Snake body color
+ */
 static const enum color snake_col = color_red;
-static const enum color food_col  = color_green;
 
-enum wins {
-	win_main = 0,
-	win_info,
+/**
+ * @brief Food color
+ */
+static const enum color food_col = color_green;
+
+/**
+ * @brief Type of windows that csnake game consists of
+ */
+enum win_tp {
+	win_tp_main = 0,
+	win_tp_info,
 	num_wins,
 };
 
+/**
+ * @brief Windows configuration
+ */
 static const struct win_cfg wcfgs[] = {
-	[win_main] = {
+	[win_tp_main] = {
 		.dim = {
 			.row = 30,
 			.col = 60,
@@ -39,7 +52,7 @@ static const struct win_cfg wcfgs[] = {
 		},
 		.border = true,
 	},
-	[win_info] = {
+	[win_tp_info] = {
 		.dim = {
 			.row = 30,
 			.col = 25,
@@ -52,11 +65,17 @@ static const struct win_cfg wcfgs[] = {
 	}
 };
 
+/**
+ * @brief Initial snake head position
+ */
 static const struct vec2 snake_hpos = {
 	.row = 10,
 	.col = 9,
 };
 
+/**
+ * @brief Game controls information text
+ */
 static const char* ctrl_txt =
 	"controls\n"
 	"---------------------\n"
