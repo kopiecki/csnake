@@ -253,7 +253,7 @@ static int on_frame(struct ncge* const ctx)
 	return 0;
 }
 
-static struct ncge_ops ops = {
+static const struct ncge_ops ops = {
 		.on_frame = on_frame,
 		.state_ops = {
 				[state_init] = on_init,
