@@ -1,0 +1,7 @@
+<map id="app/src/snake.h" name="app/src/snake.h">
+<area shape="rect" id="node1" title="Snake representation." alt="" coords="97,5,212,32"/>
+<area shape="rect" id="node2" href="$game_8c.html" title="Snake game implementation." alt="" coords="5,155,117,181"/>
+<area shape="rect" id="node3" href="$game_8h.html" title="Snake game implementation." alt="" coords="99,80,211,107"/>
+<area shape="rect" id="node5" href="$snake_8c.html" title="Snake representation." alt="" coords="235,80,349,107"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="Application entry point." alt="" coords="142,155,250,181"/>
+</map>

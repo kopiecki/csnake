@@ -1,0 +1,4 @@
+<map id="win_cfg" name="win_cfg">
+<area shape="rect" id="node1" title="Window configuration." alt="" coords="5,109,72,136"/>
+<area shape="rect" id="node2" href="$structvec2.html" title="Generic vector with two elements." alt="" coords="13,5,64,32"/>
+</map>

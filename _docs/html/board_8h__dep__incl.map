@@ -1,0 +1,11 @@
+<map id="lib/ncge/include/ncge/board.h" name="lib/ncge/include/ncge/board.h">
+<area shape="rect" id="node1" title="Board implementation." alt="" coords="239,5,383,47"/>
+<area shape="rect" id="node2" href="$rect_8h.html" title="Drawable rectangle." alt="" coords="75,95,219,136"/>
+<area shape="rect" id="node8" href="$board_8c.html" title="Board implementation." alt="" coords="243,102,379,129"/>
+<area shape="rect" id="node9" href="$ncge_8c.html" title="ncurses game backend" alt="" coords="404,102,536,129"/>
+<area shape="rect" id="node3" href="$game_8h.html" title="Snake game implementation." alt="" coords="45,259,157,285"/>
+<area shape="rect" id="node6" href="$snake_8h.html" title="Snake representation." alt="" coords="138,184,253,211"/>
+<area shape="rect" id="node4" href="$game_8c.html" title="Snake game implementation." alt="" coords="138,333,250,360"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="Application entry point." alt="" coords="5,333,113,360"/>
+<area shape="rect" id="node7" href="$snake_8c.html" title="Snake representation." alt="" coords="231,259,346,285"/>
+</map>

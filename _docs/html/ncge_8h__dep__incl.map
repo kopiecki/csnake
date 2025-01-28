@@ -1,0 +1,8 @@
+<map id="lib/ncge/include/ncge/ncge.h" name="lib/ncge/include/ncge/ncge.h">
+<area shape="rect" id="node1" title="ncurses game backend" alt="" coords="132,5,276,47"/>
+<area shape="rect" id="node2" href="$config_8h.html" title="Configuration file." alt="" coords="5,95,120,121"/>
+<area shape="rect" id="node3" href="$game_8c.html" title="Snake game implementation." alt="" coords="80,169,192,196"/>
+<area shape="rect" id="node4" href="$game_8h.html" title="Snake game implementation." alt="" coords="195,95,307,121"/>
+<area shape="rect" id="node6" href="$ncge_8c.html" title="ncurses game backend" alt="" coords="331,95,463,121"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="Application entry point." alt="" coords="217,169,325,196"/>
+</map>

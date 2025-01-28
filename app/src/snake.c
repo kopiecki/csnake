@@ -1,8 +1,11 @@
-/*
+/**
  * @file   snake.c
+ * @brief  Snake representation
+ * @author Daniel Kopiecki <daniel.kopiecki@protonmail.com>
+ * @date   2025-01-26
  *
- * SPDX-FileCopyrightText: 2024 Daniel Kopiecki
- * SPDX-License-Identifier: MIT
+ * @copyright Copyright (c) 2025 Daniel Kopiecki
+ * @par       License: MIT
  */
 
 #include "snake.h"
@@ -16,16 +19,16 @@
 
 static inline struct vec2 dir_to_vec(enum dir d)
 {
-	assert(d <= dir_left);
+	assert(d <= DIR_LEFT);
 
 	switch (d) {
-	case dir_up:
+	case DIR_UP:
 		return vec2_create(-1, 0);
-	case dir_down:
+	case DIR_DOWN:
 		return vec2_create(1, 0);
-	case dir_left:
+	case DIR_LEFT:
 		return vec2_create(0, -2);
-	case dir_right:
+	case DIR_RIGHT:
 		return vec2_create(0, 2);
 	default:
 		return vec2_create(0, 0);

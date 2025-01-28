@@ -1,0 +1,12 @@
+<map id="game" name="game">
+<area shape="rect" id="node1" title="Snake game representation." alt="" coords="93,288,147,315"/>
+<area shape="rect" id="node2" href="$structrect.html" title="Aggregated rectangle data." alt="" coords="14,199,58,225"/>
+<area shape="rect" id="node3" href="$structvec2.html" title="Generic vector with two elements." alt="" coords="5,95,56,121"/>
+<area shape="rect" id="node4" href="$structncge.html" title="Backend representation." alt="" coords="179,199,229,225"/>
+<area shape="rect" id="node5" href="$structll.html" title="Linked list representation." alt="" coords="174,95,213,121"/>
+<area shape="rect" id="node8" href="$structsnake.html" title="Snake representation." alt="" coords="91,199,149,225"/>
+<area shape="rect" id="node6" href="$structnode.html" title="Linked list node." alt="" coords="168,5,219,32"/>
+<area shape="rect" id="node7" href="$structncge__ops.html" title="Game loop operation callbacks." alt="" coords="239,95,318,121"/>
+<area shape="rect" id="node9" href="$structboard.html" title="Board representation." alt="" coords="81,95,135,121"/>
+<area shape="rect" id="node10" href="$structcell.html" title="Cell representation." alt="" coords="87,5,129,32"/>
+</map>

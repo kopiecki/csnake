@@ -1,0 +1,148 @@
+\hypertarget{ll_8c}{}\doxysection{lib/ncge/src/ll.c File Reference}
+\label{ll_8c}\index{lib/ncge/src/ll.c@{lib/ncge/src/ll.c}}
+
+
+Trivial singly linked list.  
+
+
+{\ttfamily \#include \char`\"{}ncge/ll.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for ll.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ll_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ll_8c_a040e4f98612b372cb73df4c33fbe1b9a}{ll\+\_\+init}} (struct \mbox{\hyperlink{structll}{ll}} $\ast$const l, u32 dsize, void($\ast$dtor)(void $\ast$d))
+\begin{DoxyCompactList}\small\item\em Initialize linked list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ll_8c_ab190b6dff82be7facbc3d6fa39c0f6d8}{ll\+\_\+destroy}} (struct \mbox{\hyperlink{structll}{ll}} $\ast$const l)
+\begin{DoxyCompactList}\small\item\em Destroy linked list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ll_8c_aa7972797f6a42a6b7a66925d0a22f497}{ll\+\_\+add}} (struct \mbox{\hyperlink{structll}{ll}} $\ast$const l, void $\ast$const d, bool prealloc)
+\begin{DoxyCompactList}\small\item\em Add element to linked list. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{ll_8c_af2a431458e810914377319d013add3e1}{ll\+\_\+back}} (struct \mbox{\hyperlink{structll}{ll}} $\ast$const l)
+\begin{DoxyCompactList}\small\item\em Get last element from list. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{ll_8c_a0e1124c6cd4d045080da5000c8bbf952}{ll\+\_\+get}} (struct \mbox{\hyperlink{structll}{ll}} $\ast$const l, u32 id)
+\begin{DoxyCompactList}\small\item\em Get element with specific index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Trivial singly linked list. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Kopiecki \href{mailto:daniel.kopiecki@protonmail.com}{\texttt{ daniel.\+kopiecki@protonmail.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/01-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 Daniel Kopiecki 
+\end{DoxyCopyright}
+\begin{DoxyParagraph}{License\+: MIT}
+
+\end{DoxyParagraph}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ll_8c_aa7972797f6a42a6b7a66925d0a22f497}\label{ll_8c_aa7972797f6a42a6b7a66925d0a22f497}} 
+\index{ll.c@{ll.c}!ll\_add@{ll\_add}}
+\index{ll\_add@{ll\_add}!ll.c@{ll.c}}
+\doxysubsubsection{\texorpdfstring{ll\_add()}{ll\_add()}}
+{\footnotesize\ttfamily int ll\+\_\+add (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structll}{ll}} $\ast$const}]{l,  }\item[{void $\ast$const}]{d,  }\item[{bool}]{prealloc }\end{DoxyParamCaption})}
+
+
+
+Add element to linked list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & Instance pointer \\
+\hline
+\mbox{\texttt{ in}}  & {\em d} & Data to add \\
+\hline
+\mbox{\texttt{ in}}  & {\em prealloc} & If yes, then element is preallocated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 on success, negative errno otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ll_8c_af2a431458e810914377319d013add3e1}\label{ll_8c_af2a431458e810914377319d013add3e1}} 
+\index{ll.c@{ll.c}!ll\_back@{ll\_back}}
+\index{ll\_back@{ll\_back}!ll.c@{ll.c}}
+\doxysubsubsection{\texorpdfstring{ll\_back()}{ll\_back()}}
+{\footnotesize\ttfamily void$\ast$ ll\+\_\+back (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structll}{ll}} $\ast$const}]{l }\end{DoxyParamCaption})}
+
+
+
+Get last element from list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & Instance pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ Last element 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ll_8c_ab190b6dff82be7facbc3d6fa39c0f6d8}\label{ll_8c_ab190b6dff82be7facbc3d6fa39c0f6d8}} 
+\index{ll.c@{ll.c}!ll\_destroy@{ll\_destroy}}
+\index{ll\_destroy@{ll\_destroy}!ll.c@{ll.c}}
+\doxysubsubsection{\texorpdfstring{ll\_destroy()}{ll\_destroy()}}
+{\footnotesize\ttfamily void ll\+\_\+destroy (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structll}{ll}} $\ast$const}]{l }\end{DoxyParamCaption})}
+
+
+
+Destroy linked list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & Instance pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ll_8c_a0e1124c6cd4d045080da5000c8bbf952}\label{ll_8c_a0e1124c6cd4d045080da5000c8bbf952}} 
+\index{ll.c@{ll.c}!ll\_get@{ll\_get}}
+\index{ll\_get@{ll\_get}!ll.c@{ll.c}}
+\doxysubsubsection{\texorpdfstring{ll\_get()}{ll\_get()}}
+{\footnotesize\ttfamily void$\ast$ ll\+\_\+get (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structll}{ll}} $\ast$const}]{l,  }\item[{u32}]{id }\end{DoxyParamCaption})}
+
+
+
+Get element with specific index. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & Instance pointer \\
+\hline
+\mbox{\texttt{ in}}  & {\em id} & Element index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ Element 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ll_8c_a040e4f98612b372cb73df4c33fbe1b9a}\label{ll_8c_a040e4f98612b372cb73df4c33fbe1b9a}} 
+\index{ll.c@{ll.c}!ll\_init@{ll\_init}}
+\index{ll\_init@{ll\_init}!ll.c@{ll.c}}
+\doxysubsubsection{\texorpdfstring{ll\_init()}{ll\_init()}}
+{\footnotesize\ttfamily void ll\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structll}{ll}} $\ast$const}]{l,  }\item[{u32}]{dsize,  }\item[{void($\ast$)(void $\ast$d)}]{dtor }\end{DoxyParamCaption})}
+
+
+
+Initialize linked list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & Instance pointer \\
+\hline
+\mbox{\texttt{ in}}  & {\em dsize} & List size \\
+\hline
+\mbox{\texttt{ in}}  & {\em dtor} & Element destructor, leave as NULL to select basic {\ttfamily free()} \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,12 @@
+<map id="lib/ncge/include/ncge/ll.h" name="lib/ncge/include/ncge/ll.h">
+<area shape="rect" id="node1" title="Trivial singly linked list." alt="" coords="261,5,427,32"/>
+<area shape="rect" id="node2" href="$snake_8c.html" title="Snake representation." alt="" coords="5,169,120,196"/>
+<area shape="rect" id="node3" href="$snake_8h.html" title="Snake representation." alt="" coords="125,87,240,114"/>
+<area shape="rect" id="node7" href="$ncge_8h.html" title="ncurses game backend" alt="" coords="272,80,416,121"/>
+<area shape="rect" id="node9" href="$ncge_8c.html" title="ncurses game backend" alt="" coords="521,169,653,196"/>
+<area shape="rect" id="node10" href="$ll_8c.html" title="Trivial singly linked list." alt="" coords="491,87,602,114"/>
+<area shape="rect" id="node4" href="$game_8c.html" title="Snake game implementation." alt="" coords="288,244,400,271"/>
+<area shape="rect" id="node5" href="$game_8h.html" title="Snake game implementation." alt="" coords="195,169,307,196"/>
+<area shape="rect" id="node6" href="$main_8c.html" title="Application entry point." alt="" coords="155,244,263,271"/>
+<area shape="rect" id="node8" href="$config_8h.html" title="Configuration file." alt="" coords="381,169,496,196"/>
+</map>

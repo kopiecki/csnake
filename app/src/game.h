@@ -1,8 +1,11 @@
-/*
+/**
  * @file   game.h
+ * @brief  Snake game implementation
+ * @author Daniel Kopiecki <daniel.kopiecki@protonmail.com>
+ * @date   2025-01-26
  *
- * SPDX-FileCopyrightText: 2024 Daniel Kopiecki
- * SPDX-License-Identifier: MIT
+ * @copyright Copyright (c) 2025 Daniel Kopiecki
+ * @par       License: MIT
  */
 
 #ifndef GAME_H_INCLUDED_
@@ -15,21 +18,22 @@
 #include "snake.h"
 
 /**
- * struct game - Snake game representation
- * @base:  Pointer to base class. In this case it is `ncge` layer.
- * @snake: Snake representation.
- * @food:  Food representation.
- * @score: Game score.
- * @dir:   Current direction in which snake's moving.
+ * @brief Snake game representation
  */
 struct game {
-	struct ncge base;
-	struct snake snake;
-	struct rect food;
-	u32 score;
-	enum dir dir;
+	struct ncge base;   /**< Pointer to base class*/
+	struct snake snake; /**< Snake representation */
+	struct rect food;   /**< Food representation */
+	u32 score;          /**< Current score*/
+	enum dir dir;       /**< Current snake direction */
 };
 
+/**
+ * @brief Run game
+ *
+ * @param g    Instance pointer
+ * @return int 0 on success, negative errno otherwise
+ */
 int game_run(struct game* const g);
 
 #endif /* GAME_H_INCLUDED_ */

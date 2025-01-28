@@ -1,0 +1,16 @@
+<map id="app/src/snake.c" name="app/src/snake.c">
+<area shape="rect" id="node1" title="Snake representation." alt="" coords="138,5,253,32"/>
+<area shape="rect" id="node2" href="$snake_8h.html" title="Snake representation." alt="" coords="44,80,112,107"/>
+<area shape="rect" id="node3" href="$ll_8h.html" title="Trivial singly linked list." alt="" coords="5,155,76,181"/>
+<area shape="rect" id="node5" href="$types_8h.html" title="Common types and macros." alt="" coords="113,379,211,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="325,229,394,256"/>
+<area shape="rect" id="node10" title=" " alt="" coords="429,304,508,331"/>
+<area shape="rect" id="node14" title=" " alt="" coords="469,80,533,107"/>
+<area shape="rect" id="node7" href="$rect_8h.html" title="Drawable rectangle." alt="" coords="193,155,280,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="169,453,243,480"/>
+<area shape="rect" id="node6" title=" " alt="" coords="79,453,144,480"/>
+<area shape="rect" id="node9" href="$board_8h.html" title="Board implementation." alt="" coords="203,229,300,256"/>
+<area shape="rect" id="node11" href="$cell_8h.html" title="Board cell representation." alt="" coords="319,304,405,331"/>
+<area shape="rect" id="node13" href="$vec2_8h.html" title="Generic vector with two elements." alt="" coords="202,304,295,331"/>
+<area shape="rect" id="node12" title=" " alt="" coords="321,379,403,405"/>
+</map>

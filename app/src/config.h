@@ -1,47 +1,46 @@
-/*
- * @file   cfg.h
+/**
+ * @file   config.h
+ * @brief  Configuration file
+ * @author Daniel Kopiecki <daniel.kopiecki@protonmail.com>
+ * @date   2025-01-26
  *
- * SPDX-FileCopyrightText: 2024 Daniel Kopiecki
- * SPDX-License-Identifier: MIT
+ * @copyright Copyright (c) 2025 Daniel Kopiecki
+ * @par       License: MIT
  */
 
-#ifndef CFG_H_INCLUDED_
-#define CFG_H_INCLUDED_
-
-#include <complex.h>
 #include <stdbool.h>
 
 #include "ncge/ncge.h"
 
-#define DELAY_INIT INT16_MAX
-#define DELAY_STEP (1 << 9)
+/**
+ * @brief Game speed incrementation step
+ */
 #define DELAY_INC  (1 << 6)
-#define KEY_ESC    27
 
 /**
  * @brief Snake body color
  */
-static const enum color snake_col = color_red;
+static const enum color snake_col = COL_RED;
 
 /**
  * @brief Food color
  */
-static const enum color food_col = color_green;
+static const enum color food_col = COL_GREEN;
 
 /**
  * @brief Type of windows that csnake game consists of
  */
 enum win_tp {
-	win_tp_main = 0,
-	win_tp_info,
-	num_wins,
+	WIN_MAIN = 0,
+	WIN_INFO,
+	NUM_WINS,
 };
 
 /**
  * @brief Windows configuration
  */
 static const struct win_cfg wcfgs[] = {
-	[win_tp_main] = {
+	[WIN_MAIN] = {
 		.dim = {
 			.row = 30,
 			.col = 60,
@@ -52,7 +51,7 @@ static const struct win_cfg wcfgs[] = {
 		},
 		.border = true,
 	},
-	[win_tp_info] = {
+	[WIN_INFO] = {
 		.dim = {
 			.row = 30,
 			.col = 25,
@@ -86,7 +85,5 @@ static const char* ctrl_txt =
 	"+/-: change speed\n"
 	"q/ESC/ctrl+c: quit\n"
 	"---------------------\n";
-
-#endif /* CFG_H_INCLUDED_ */
 
 /**** END OF FILE ****/

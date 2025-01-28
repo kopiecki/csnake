@@ -1,0 +1,75 @@
+\hypertarget{game_8h}{}\doxysection{app/src/game.h File Reference}
+\label{game_8h}\index{app/src/game.h@{app/src/game.h}}
+
+
+Snake game implementation.  
+
+
+{\ttfamily \#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}ncge/ncge.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ncge/rect.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}snake.\+h\char`\"{}}\newline
+Include dependency graph for game.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{game_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgame}{game}}
+\begin{DoxyCompactList}\small\item\em Snake game representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{game_8h_ae3574c355e56455a3876b16a63376e5d}{game\+\_\+run}} (struct \mbox{\hyperlink{structgame}{game}} $\ast$const g)
+\begin{DoxyCompactList}\small\item\em Run game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Snake game implementation. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Kopiecki \href{mailto:daniel.kopiecki@protonmail.com}{\texttt{ daniel.\+kopiecki@protonmail.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/01-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 Daniel Kopiecki 
+\end{DoxyCopyright}
+\begin{DoxyParagraph}{License\+: MIT}
+
+\end{DoxyParagraph}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{game_8h_ae3574c355e56455a3876b16a63376e5d}\label{game_8h_ae3574c355e56455a3876b16a63376e5d}} 
+\index{game.h@{game.h}!game\_run@{game\_run}}
+\index{game\_run@{game\_run}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_run()}{game\_run()}}
+{\footnotesize\ttfamily int game\+\_\+run (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgame}{game}} $\ast$const}]{g }\end{DoxyParamCaption})}
+
+
+
+Run game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Instance pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 on success, negative errno otherwise 
+\end{DoxyReturn}

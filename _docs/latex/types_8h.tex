@@ -1,0 +1,101 @@
+\hypertarget{types_8h}{}\doxysection{lib/ncge/include/ncge/types.h File Reference}
+\label{types_8h}\index{lib/ncge/include/ncge/types.h@{lib/ncge/include/ncge/types.h}}
+
+
+Common types and macros.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for types.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{types_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{types_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{types_8h_a0eed1117909081286ff660bc9bffa0c4}\label{types_8h_a0eed1117909081286ff660bc9bffa0c4}} 
+\#define {\bfseries ARR\+\_\+\+SIZE}(arr)~sizeof(arr) / sizeof(arr\mbox{[}0\mbox{]})
+\item 
+\mbox{\Hypertarget{types_8h_ada67c62b1c57e07efa04431bc40b9238}\label{types_8h_ada67c62b1c57e07efa04431bc40b9238}} 
+\#define {\bfseries UNUSED}(v)~(void)v
+\item 
+\mbox{\Hypertarget{types_8h_ab2be68115e7f7622dbbba8afdb25be9e}\label{types_8h_ab2be68115e7f7622dbbba8afdb25be9e}} 
+\#define \mbox{\hyperlink{types_8h_ab2be68115e7f7622dbbba8afdb25be9e}{in\+\_\+range}}(v,  l,  h)~(((v) $>$ (l)) \&\& ((v) $<$ (h)))
+\begin{DoxyCompactList}\small\item\em Generic in range macro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}\label{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}} 
+typedef uint64\+\_\+t {\bfseries u64}
+\item 
+\mbox{\Hypertarget{types_8h_afaa62991928fb9fb18ff0db62a040aba}\label{types_8h_afaa62991928fb9fb18ff0db62a040aba}} 
+typedef uint32\+\_\+t {\bfseries u32}
+\item 
+\mbox{\Hypertarget{types_8h_a92c50087ca0e64fa93fc59402c55f8ca}\label{types_8h_a92c50087ca0e64fa93fc59402c55f8ca}} 
+typedef uint8\+\_\+t {\bfseries u8}
+\item 
+\mbox{\Hypertarget{types_8h_a85cb35fbe5bf2961d7ad5f26814a91a2}\label{types_8h_a85cb35fbe5bf2961d7ad5f26814a91a2}} 
+typedef int64\+\_\+t {\bfseries i64}
+\item 
+\mbox{\Hypertarget{types_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}\label{types_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}} 
+typedef int32\+\_\+t {\bfseries i32}
+\item 
+\mbox{\Hypertarget{types_8h_ae3702327b5f47e83b431e22b33da7b58}\label{types_8h_ae3702327b5f47e83b431e22b33da7b58}} 
+typedef int8\+\_\+t {\bfseries i8}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{types_8h_a37dbdc30935031c05304482e1be89d8f}\label{types_8h_a37dbdc30935031c05304482e1be89d8f}} 
+enum \mbox{\hyperlink{types_8h_a37dbdc30935031c05304482e1be89d8f}{color}} \{ \newline
+{\bfseries COL\+\_\+\+NONE} = 0
+, {\bfseries COL\+\_\+\+CYAN}
+, {\bfseries COL\+\_\+\+YELLOW}
+, {\bfseries COL\+\_\+\+BLUE}
+, \newline
+{\bfseries COL\+\_\+\+MAGENTA}
+, {\bfseries COL\+\_\+\+GREEN}
+, {\bfseries COL\+\_\+\+RED}
+, {\bfseries NUM\+\_\+\+COLS}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum with colors (duplicated from ncurses for verbosity) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{types_8h_a4ca269cf93df1b512b52174c1a256fe5}\label{types_8h_a4ca269cf93df1b512b52174c1a256fe5}} 
+enum \mbox{\hyperlink{types_8h_a4ca269cf93df1b512b52174c1a256fe5}{dir}} \{ \newline
+{\bfseries DIR\+\_\+\+DOWN}
+, {\bfseries DIR\+\_\+\+UP}
+, {\bfseries DIR\+\_\+\+RIGHT}
+, {\bfseries DIR\+\_\+\+LEFT}
+, \newline
+{\bfseries NUM\+\_\+\+DIRS}
+ \}
+\begin{DoxyCompactList}\small\item\em Directions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Common types and macros. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Kopiecki \href{mailto:daniel.kopiecki@protonmail.com}{\texttt{ daniel.\+kopiecki@protonmail.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/01-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 Daniel Kopiecki 
+\end{DoxyCopyright}
+\begin{DoxyParagraph}{License\+: MIT}
+
+\end{DoxyParagraph}

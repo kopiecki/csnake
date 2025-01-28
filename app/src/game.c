@@ -1,8 +1,11 @@
-/*
+/**
  * @file   game.c
+ * @brief  Snake game implementation
+ * @author Daniel Kopiecki <daniel.kopiecki@protonmail.com>
+ * @date   2025-01-26
  *
- * SPDX-FileCopyrightText: 2024 Daniel Kopiecki
- * SPDX-License-Identifier: MIT
+ * @copyright Copyright (c) 2025 Daniel Kopiecki
+ * @par       License: MIT
  */
 
 #include "game.h"
@@ -25,15 +28,15 @@ static inline int get_rn(int lower, int upper)
 
 static inline int put_title(WINDOW* const w)
 {
-	return mvwprintw(w, 0, wcfgs[win_tp_main].dim.col / 2 - 4, "csnake");
+	return mvwprintw(w, 0, wcfgs[WIN_MAIN].dim.col / 2 - 4, "csnake");
 }
 
 static inline int put_score(WINDOW* const w, u32 score)
 {
 	return mvwprintw(
 		w,
-		wcfgs[win_tp_main].dim.row - 1,
-		wcfgs[win_tp_main].dim.col / 2 - 4,
+		wcfgs[WIN_MAIN].dim.row - 1,
+		wcfgs[WIN_MAIN].dim.col / 2 - 4,
 		"score: %d",
 		score);
 }
@@ -104,7 +107,7 @@ static int on_init(struct ncge* const ctx)
 	if (err < 0)
 		return err;
 
-	WINDOW* const w = ncge_get_win(ctx, win_tp_info);
+	WINDOW* const w = ncge_get_win(ctx, WIN_INFO);
 	if (w == NULL)
 		return -ENODATA;
 
@@ -122,10 +125,10 @@ static int on_init(struct ncge* const ctx)
 
 	spawn_food(b, &g->food);
 
-	g->dir   = dir_right;
+	g->dir   = DIR_RIGHT;
 	g->score = 0;
 
-	ctx->state = state_play;
+	ctx->state = STATE_PLAY;
 
 	return 0;
 }
@@ -146,26 +149,26 @@ static int on_play(struct ncge* const ctx)
 	case 'w':
 	case 'k':
 	case KEY_UP:
-		if (g->dir != dir_down)
-			g->dir = dir_up;
+		if (g->dir != DIR_DOWN)
+			g->dir = DIR_UP;
 		break;
 	case 's':
 	case 'j':
 	case KEY_DOWN:
-		if (g->dir != dir_up)
-			g->dir = dir_down;
+		if (g->dir != DIR_UP)
+			g->dir = DIR_DOWN;
 		break;
 	case 'd':
 	case 'l':
 	case KEY_RIGHT:
-		if (g->dir != dir_left)
-			g->dir = dir_right;
+		if (g->dir != DIR_LEFT)
+			g->dir = DIR_RIGHT;
 		break;
 	case 'a':
 	case 'h':
 	case KEY_LEFT:
-		if (g->dir != dir_right)
-			g->dir = dir_left;
+		if (g->dir != DIR_RIGHT)
+			g->dir = DIR_LEFT;
 		break;
 	case '+':
 		ctx->delay_step += DELAY_INC;
@@ -175,7 +178,7 @@ static int on_play(struct ncge* const ctx)
 		break;
 	case 'q':
 	case KEY_ESC:
-		ctx->state = state_exit;
+		ctx->state = STATE_EXIT;
 		break;
 	default:
 		break;
@@ -190,12 +193,12 @@ static void reinit(struct ncge* const ctx)
 
 	struct game* const g = child_of(ctx);
 
-	g->dir   = dir_right;
+	g->dir   = DIR_RIGHT;
 	g->score = 0;
 
 	snake_destroy(&g->snake);
 
-	ctx->state = state_init;
+	ctx->state = STATE_INIT;
 }
 
 static int on_lose(struct ncge* const ctx)
@@ -204,7 +207,7 @@ static int on_lose(struct ncge* const ctx)
 
 	struct game* const g = child_of(ctx);
 
-	WINDOW* const w = ncge_get_win(ctx, win_tp_info);
+	WINDOW* const w = ncge_get_win(ctx, WIN_INFO);
 
 	int err = put_end_msg(w, g->score);
 	if (err < 0)
@@ -216,7 +219,7 @@ static int on_lose(struct ncge* const ctx)
 		break;
 	case '\n':
 	case 'n':
-		ctx->state = state_exit;
+		ctx->state = STATE_EXIT;
 		break;
 	default:
 		break;
@@ -238,10 +241,10 @@ static int on_frame(struct ncge* const ctx)
 {
 	struct game* const g = child_of(ctx);
 
-	if (ctx->state == state_play) {
+	if (ctx->state == STATE_PLAY) {
 		const bool moved = snake_move(&g->snake, g->dir);
 		if (!moved) {
-			ctx->state = state_lose;
+			ctx->state = STATE_LOSE;
 			return 0;
 		}
 
@@ -254,14 +257,14 @@ static int on_frame(struct ncge* const ctx)
 }
 
 static const struct ncge_ops ops = {
-		.on_frame = on_frame,
-		.state_ops = {
-				[state_init] = on_init,
-				[state_play] = on_play,
-				[state_lose] = on_lose,
-				[state_exit] = on_leave,
-		},
-	};
+	.on_frame = on_frame,
+	.state_ops = {
+		[STATE_INIT] = on_init,
+		[STATE_PLAY] = on_play,
+		[STATE_LOSE] = on_lose,
+		[STATE_EXIT] = on_leave,
+	},
+};
 
 int game_run(struct game* const g)
 {
@@ -271,7 +274,7 @@ int game_run(struct game* const g)
 	if (err < 0)
 		return err;
 
-	for (int i = 0; i < num_wins; i++) {
+	for (int i = 0; i < NUM_WINS; i++) {
 		err = ncge_create_win(&g->base, &wcfgs[i]);
 		if (err < 0)
 			return err;
