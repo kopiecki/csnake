@@ -1,6 +1,0 @@
-<map id="ncge" name="ncge">
-<area shape="rect" id="node1" title="Backend representation." alt="" coords="51,199,101,225"/>
-<area shape="rect" id="node2" href="$structll.html" title="Linked list representation." alt="" coords="11,95,50,121"/>
-<area shape="rect" id="node3" href="$structnode.html" title="Linked list node." alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" href="$structncge__ops.html" title="Game loop operation callbacks." alt="" coords="74,95,153,121"/>
-</map>

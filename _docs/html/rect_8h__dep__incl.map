@@ -1,8 +1,0 @@
-<map id="lib/ncge/include/ncge/rect.h" name="lib/ncge/include/ncge/rect.h">
-<area shape="rect" id="node1" title="Drawable rectangle." alt="" coords="75,5,219,47"/>
-<area shape="rect" id="node2" href="$game_8h.html" title="Snake game implementation." alt="" coords="45,169,157,196"/>
-<area shape="rect" id="node5" href="$snake_8h.html" title="Snake representation." alt="" coords="138,95,253,121"/>
-<area shape="rect" id="node3" href="$game_8c.html" title="Snake game implementation." alt="" coords="138,244,250,271"/>
-<area shape="rect" id="node4" href="$main_8c.html" title="Application entry point." alt="" coords="5,244,113,271"/>
-<area shape="rect" id="node6" href="$snake_8c.html" title="Snake representation." alt="" coords="231,169,346,196"/>
-</map>

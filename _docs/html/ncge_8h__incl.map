@@ -1,9 +1,0 @@
-<map id="lib/ncge/include/ncge/ncge.h" name="lib/ncge/include/ncge/ncge.h">
-<area shape="rect" id="node1" title="ncurses game backend" alt="" coords="134,5,278,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,84,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="178,244,253,271"/>
-<area shape="rect" id="node4" title=" " alt="" coords="320,244,385,271"/>
-<area shape="rect" id="node5" href="$ll_8h.html" title="Trivial singly linked list." alt="" coords="277,95,348,121"/>
-<area shape="rect" id="node7" href="$vec2_8h.html" title="Generic vector with two elements." alt="" coords="159,95,253,121"/>
-<area shape="rect" id="node6" href="$types_8h.html" title="Common types and macros." alt="" coords="211,169,308,196"/>
-</map>

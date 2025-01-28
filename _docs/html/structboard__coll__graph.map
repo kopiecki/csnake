@@ -1,4 +1,0 @@
-<map id="board" name="board">
-<area shape="rect" id="node1" title="Board representation." alt="" coords="5,95,60,121"/>
-<area shape="rect" id="node2" href="$structcell.html" title="Cell representation." alt="" coords="11,5,54,32"/>
-</map>
