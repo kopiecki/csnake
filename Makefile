@@ -44,6 +44,12 @@ run:
 	$(call log_info,"DONE: $@")
 .PHONY: run
 
+.mk-build-dir:
+	$(call log_info,"Creating $(project) build directory...")
+	$(at) mkdir -p $(build_dir)
+	$(call log_info,"DONE: $@")
+.PHONY: .mk-build-dir
+
 .mk-docs-dir:
 	$(call log_info,"Creating $(project) documentation directory...")
 	$(at) mkdir -p $(docs_dir)

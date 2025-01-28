@@ -18,6 +18,8 @@ int main(void)
 	if (err < 0)
 		return err;
 
+	game_destroy(&g);
+
 	return 0;
 }
 

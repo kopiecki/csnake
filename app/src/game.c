@@ -277,14 +277,24 @@ int game_run(struct game* const g)
 	for (int i = 0; i < NUM_WINS; i++) {
 		err = ncge_create_win(&g->base, &wcfgs[i]);
 		if (err < 0)
-			return err;
+			goto ncge_free;
 	}
 
 	err = ncge_create_board(&g->base, 0);
 	if (err < 0)
-		return err;
+		goto ncge_free;
 
 	return ncge_run(&g->base);
+
+ncge_free:
+	ncge_destroy(&g->base);
+
+	return err;
+}
+
+void game_destroy(struct game* const g)
+{
+	ncge_destroy(&g->base);
 }
 
 /**** END OF FILE ****/

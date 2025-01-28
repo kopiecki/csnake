@@ -36,6 +36,13 @@ struct game {
  */
 int game_run(struct game* const g);
 
+/**
+ * @brief Destroy game
+ *
+ * @param g    Instance pointer
+ */
+void game_destroy(struct game* const g);
+
 #endif /* GAME_H_INCLUDED_ */
 
 /**** END OF FILE ****/
